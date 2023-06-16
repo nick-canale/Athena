@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Search results</title>
+</head>
+
+<body>
+    <h1>Search results</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>item name</th>
+                <th>search_stat_label</th>
+                <th>stat_id</th>
+                <th>stat_text</th>
+                <th>stat_type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ stat.search_stat_id }}</td>
+                <td>{{ stat.search_stat_label }}</td>
+                <td>{{ stat.stat_id }}</td>
+                <td>{{ stat.stat_text }}</td>
+                <td>{{ stat.stat_type }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

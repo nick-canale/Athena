@@ -1,0 +1,28 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function callFunctionEvery5Minutes(want,have) {
+    // Send an AJAX request to the Django view
+    $.ajax({
+      url: '/bulk_exchange/'+want+'/'+have+'/',
+      method: 'GET',
+      success: function(response) {
+        // Handle the response from the Django view
+        console.log(response);
+      },
+      error: function(xhr, status, error) {
+        // Handle any errors
+        console.error(error);
+      }
+    });
+  }
+  $(document).ready(function() {
+    var want = '{{ want }}'
+    var have = '{{ have }}'
+    console.log('setting interval');
+    // Call the function every 5 minutes (300000 milliseconds)
+    setInterval(function() {
+        callFunctionEvery5Minutes(want, have);
+    }, 300000);
+        console.log('interval set');
+    });
+</script>

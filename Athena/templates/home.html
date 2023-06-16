@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Searches</title>
+</head>
+
+<body>
+  <h1><a href="bulk_exchange/house-of-mirrors/divine/">Search for house of mirrors</a></h1>
+  <h1><a href="refresh_every_5m/house-of-mirrors/divine/">Search for house of mirrors every 5m</a></h1>
+  <h1>Searches</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>search_id</th>
+        <th>result_datetime</th>
+        <th>account_name</th>
+        <th>last_character_name</th>
+        <th>offer_tag</th>
+        <th>offer_amount</th>
+        <th>for_tag</th>
+        <th>for_amount</th>
+        <th>for_stock</th>
+        <th>whisper</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for search in searches %}
+      <tr>
+        <td>{{ search.source_search_request.id }}</td>
+        <td>{{ search.result_datetime }}</td>
+        <td>{{ search.account_name }}</td>
+        <td>{{ search.last_character_name }}</td>
+        <td>{{ search.offer_tag }}</td>
+        <td>{{ search.offer_amount }}</td>
+        <td>{{ search.for_tag }}</td>
+        <td>{{ search.for_amount }}</td>
+        <td>{{ search.for_stock }}</td>
+        <td>{{ search.whisper }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+
+</html>

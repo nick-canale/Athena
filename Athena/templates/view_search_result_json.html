@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Pretty Display</title>
+    <style>
+        pre {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Data</h1>
+    <pre id="json-data"></pre>
+
+    <script>
+        // Make an AJAX request to retrieve the JSON data from the view
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var jsonData = JSON.stringify(JSON.parse(xhr.responseText), null, 2);
+                document.getElementById("json-data").textContent = jsonData;
+            }
+        };
+        // Get the query string from the URL
+        var queryString = window.location.search;
+
+        // Create a new URLSearchParams object and pass the query string
+        var urlParams = new URLSearchParams(queryString);
+        var id = urlParams.get("id");
+        xhr.open("GET", "/get_search_json_by_id/"+id);
+        xhr.send();
+    </script>
+</body>
+</html>

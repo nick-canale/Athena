@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Items you can search for</title>
+</head>
+
+<body>
+  <h1>Items</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>item_name</th>
+        <th>item_type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td><small style="color: #2e317f">{{ item.item_name }}</small></td>
+        <td><small style="color: #b11212">{{ item.item_type }}</small></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+
+</html>
