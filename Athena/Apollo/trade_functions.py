@@ -124,4 +124,4 @@ def f_bulk_exchange(want,have):
                                                                                          result['listing']['offers'][0]['exchange']['whisper'].format(result['listing']['offers'][0]['exchange']['amount'])),
                                              source_search_request=request)
     else:
-        raise ValueError("GGG did not like your query")
+        raise ValueError(f"GGG did not like your query, error code {str(response.status_code)}")
