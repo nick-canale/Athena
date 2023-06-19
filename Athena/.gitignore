@@ -1,4 +1,5 @@
 node_modules*
 non sucking service manager*
-Athena\Apollo\__pycache__*
-Athena\db.sqlite3
+Apollo\__pycache__*
+Athena\__pycache__*
+db.sqlite3
