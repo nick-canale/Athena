@@ -30,5 +30,6 @@ urlpatterns = [
     path('bulk_exchange/<str:want>/<str:have>/', views.bulk_exchange, name='bulk_exchange'),
     path('refresh_every_5m/<str:want>/<str:have>/', views.refresh_every_5m, name='refresh_every_5m'),
     path('data_refresh/<str:type>/', views.data_refresh, name='data_refresh'),
+    path('house_of_mirrors_results/', views.house_of_mirrors_results, name='house_of_mirrors_results'),
 ]
 

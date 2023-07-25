@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House of mirrors - price results</title>
+</head>
+<body>
+    <h1>House of mirrors - price results</h1>
+    <ul>
+        <li>item - date - price</li>
+        {% for result in results %}
+            <li>{{ result.item }} - {{ result.the_date }} - {{ result.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
