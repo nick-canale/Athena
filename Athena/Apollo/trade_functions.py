@@ -54,7 +54,7 @@ def f_data_refresh(model, url):
                 
 
 def f_search_trade_for_item(name,type,searches_json):
-    url = 'https://www.pathofexile.com/api/trade/search/Crucible'
+    url = 'https://www.pathofexile.com/api/trade/search/Ancestor'
     
     data = {
             "query": {
@@ -91,7 +91,7 @@ def f_search_trade_for_item(name,type,searches_json):
         return HttpResponse('POST request failed with status code:' + str(response.status_code) + ' - ' + str(response.text))
     
 def f_bulk_exchange(want,have):
-    url = 'http://www.pathofexile.com/api/trade/exchange/Crucible'
+    url = 'http://www.pathofexile.com/api/trade/exchange/Ancestor'
     
     data = {
                 "exchange": {

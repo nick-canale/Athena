@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price results by day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Dynamic coloring based on the last two digits of the second column */
+        tr {
+            transition: background-color 0.3s ease;
+        }
+
+        tr[data-value*="12"] {
+            background-color: orange;
+        }
+
+        tr[data-value*="23"] {
+            background-color: darkpurple;
+        }
+    </style>
+</head>
+<body>
+    <h1>Price results by day</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Date</th>
+            <th>Price</th>
+        </tr>
+        {% for result in results %}
+        <tr data-value="{{ result.the_date|slice:'-2' }}">
+            <td>{{ result.item }}</td>
+            <td>{{ result.the_date }}</td>
+            <td>{{ result.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
