@@ -82,3 +82,28 @@ def house_of_mirrors_results(request):
     processed_results = [{'item': row[1], 'the_date': datetime.strptime(row[2], '%Y-%m-%d %H:%M:%S'), 'price': row[3]} for row in results]
 
     return render(request, 'house_of_mirrors_results.html', {'results': processed_results})
+
+def all_results_by_day(request):
+    # Your raw SQL query
+    raw_query = """
+    select for_tag, formatted_datetime , round(avg(offer_amount),1) avg_offer_amt
+    from (
+    select source_search_request_id, offer_amount, for_tag, strftime('%Y-%m-%d - %H', result_datetime, '-4 hours') AS formatted_datetime , ROW_NUMBER()over(partition by source_search_request_id,for_tag  order by offer_amount) rownum
+    from Apollo_bulksearchresults ab
+    where 0=0
+    --and for_tag = 'the-apothecary'
+    and result_datetime > '2023-08-25') ab
+    where rownum between 1 and 3
+    group by for_tag, formatted_datetime
+    order by for_tag desc, formatted_datetime desc"""
+
+    with connection.cursor() as cursor:
+        cursor.execute(raw_query)
+        # Fetch all the results
+        results = cursor.fetchall()
+
+    # Process the results if needed
+    # For example, convert them to a list of dictionaries:
+    processed_results = [{'item': row[0], 'the_date': row[1], 'price': row[2]} for row in results]
+
+    return render(request, 'all_results_by_day.html', {'results': processed_results})
